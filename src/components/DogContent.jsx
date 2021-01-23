@@ -1,19 +1,9 @@
 import React from 'react'
 import PetsRoundedIcon from '@material-ui/icons/PetsRounded'
-import { Box, Button, Grid, Typography, Card, CardMedia, CardContent} from '@material-ui/core'
+import { Button, Grid, Typography, Card, CardMedia, CardContent} from '@material-ui/core'
 
 
 function DogContent(props) {
-
-    const cardstyle = {
-        maxWidth: 345, 
-      };
-    
-    const contentstyle = {
-        minWidth: 310,
-        maxWidth: 345, 
-      };
-
 
     return (
         <Grid 
@@ -25,16 +15,16 @@ function DogContent(props) {
         > 
             
             <Grid item xs={10}>
-                <Card style={cardstyle}> 
+                <Card> 
                     <CardMedia 
                         component="img"
-                        height="240"
+                        height="auto"
                         image={props.filterdItem.image.url}
                     />
                 </Card>
             </Grid>
             <Grid item xs={10}>
-                <Card style={contentstyle}> 
+                <Card minWidth="310"> 
                     <CardContent height="100%" style={{backgroundColor: "#cae4db"}}>
                         <Typography variant="h6" style={{"fontWeight": "bold"}}>
                         {props.filterdItem.name}
