@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PetsRoundedIcon from '@material-ui/icons/PetsRounded'
 import { Button, Grid, Typography, Card, CardMedia, CardContent} from '@material-ui/core'
 
 
 export default function CatContent(props){
-    const [randomNum, setRandomNum] = useState(5)
-
+    
     const cardstyle = {
         maxWidth: 345, 
       };
@@ -14,26 +13,11 @@ export default function CatContent(props){
         minWidth: 310,
         maxWidth: 345, 
       };
-    
-    
-    function handleChangeCat(e){       
-        e.preventDefault()
-        setRandomNum(getRndInteger(1, 66))
-    }
-
-    function getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) ) + min;
-    }
-
-    let data
-    // console.log(props.filterdItem)
-    if (props.filterdItem[randomNum].image && props.filterdItem[randomNum].image.url) {
-        data = props.filterdItem[randomNum]
-    } else {
-        data = props.filterdItem[randomNum + 1]
-    }
 
 
+    if ( !props.filterdItem){
+        return <p>Loading...</p>
+    } 
     return (
         <Grid 
         container 
@@ -48,7 +32,7 @@ export default function CatContent(props){
                     <CardMedia 
                         component="img"
                         height="240"
-                        image={data.image.url}
+                        image={props.filterdItem.image.url}
                     />
                 </Card>
             </Grid>
@@ -56,10 +40,10 @@ export default function CatContent(props){
                 <Card style={contentstyle}> 
                     <CardContent height="100%" style={{backgroundColor: "#cae4db"}}>
                         <Typography variant="h6" style={{"fontWeight": "bold"}}>
-                        {data.name}
+                        {props.filterdItem.name}
                         </Typography>
                         {/* The below three lines are conditionally rendered */}
-                        {(data.life_span) ? 
+                        {(props.filterdItem.life_span) ? 
                         <Typography>
                             <Typography 
                             variant="body1"
@@ -67,11 +51,11 @@ export default function CatContent(props){
                             >Average life span:
                             </Typography>
                             <Typography 
-                            variant="body1">{data.life_span}
+                            variant="body1">{props.filterdItem.life_span}
                             </Typography>
                         </Typography>
                         : null}
-                        {(data.bred_for) ? 
+                        {(props.filterdItem.bred_for) ? 
                         <Typography>
                             <Typography 
                             variant="body1"
@@ -79,11 +63,11 @@ export default function CatContent(props){
                             >Usually bred for:
                             </Typography>
                             <Typography 
-                            variant="body1">{data.bred_for}
+                            variant="body1">{props.filterdItem.bred_for}
                             </Typography>
                         </Typography>
                         : null}
-                        {(data.temperament) ? 
+                        {(props.filterdItem.temperament) ? 
                         <Typography>
                             <Typography 
                             variant="body1"
@@ -91,11 +75,11 @@ export default function CatContent(props){
                             >Personality:
                             </Typography>
                             <Typography 
-                            variant="body1">{data.temperament}
+                            variant="body1">{props.filterdItem.temperament}
                             </Typography>
                         </Typography>
                         : null}
-                        {(data.description) ? 
+                        {(props.filterdItem.description) ? 
                         <Typography>
                             <Typography 
                             variant="body1"
@@ -103,7 +87,7 @@ export default function CatContent(props){
                             >Description:
                             </Typography>
                             <Typography 
-                            variant="body1">{data.description}
+                            variant="body1">{props.filterdItem.description}
                             </Typography>
                         </Typography>
                         : null}
@@ -116,8 +100,8 @@ export default function CatContent(props){
                         variant="contained" 
                         style={{backgroundColor: "#00303f", color:"#ffffff"}} 
                         startIcon={<PetsRoundedIcon />} 
-                        onClick={handleChangeCat}
-                        > Next!
+                        onClick={props.handleChangeCat}
+                        >Next!
                     </Button>
                 </Grid>
             </Grid>

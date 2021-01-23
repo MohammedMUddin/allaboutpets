@@ -11,11 +11,14 @@ import {
 
 
 
+
 function App() {
   const [randomDogNum, setRandomDogNum] = useState(8)     //storing all the JSON data here
   const [randomCatNum, setRandomCatNum] = useState(8) 
   const [randomCat, setRandomCat] = useState([])     //storing a random randomData.id to get random dog 
   const [randomDog, setRandomDog] = useState([])
+  const [randomTest, setRandomTest] = useState([])
+
   
   const [error, setError] = useState()                    
   let dogID = []
@@ -33,11 +36,11 @@ function App() {
       .then((value) => {
         setRandomDog(value[0])
         setRandomCat(value[1])
+        setRandomTest(value[1])
       })
       .catch((err) => {
           setError(err);
       });
-
   }, []);
 
 
@@ -49,7 +52,10 @@ function App() {
 
   function handleChangeCat(e){
     e.preventDefault()
-    catID = randomCat[getRndInteger(1, 66)]
+    catID = Object.keys(randomTest)
+    let temp = catID[getRndInteger(1, 66)]
+    setRandomCatNum(parseInt(temp))
+    // console.log(randomTest[randomCatNum])
   }
 
 
@@ -83,8 +89,8 @@ function App() {
           <DogContent filterdItem={filterdItem} handleChange={handleChangeDog}/> 
         ))}
         </Route>
-        <Route path='/cats'>
-          <CatContent filterdItem={randomCat}/> 
+        <Route path='/cats' >
+          <CatContent filterdItem={randomCat[randomCatNum]} handleChangeCat={handleChangeCat}/>
         </Route>
       </Switch>
     </div> 
@@ -92,9 +98,3 @@ function App() {
 }
 
 export default App;
-
-    // catID = Object.keys(randomCat)
-    // let temp = catID[getRndInteger(1, 66)]
-    // setRandomCatNum(5)
-    // console.log(randomCat[4])
-    // // console.log(getRndInteger(1, 66))
