@@ -14,39 +14,30 @@ import {
 function App() {
   const [randomDogNum, setRandomDogNum] = useState(8)     //storing all the JSON data here
   const [randomCatNum, setRandomCatNum] = useState(8) 
-  const [randomCat, setRandomCat] = useState([])
-  const [randomDog, setRandomDog] = useState([])      //storing a random randomData.id to get random dog 
+  const [randomCat, setRandomCat] = useState([])     //storing a random randomData.id to get random dog 
+  const [randomDog, setRandomDog] = useState([])
+  
   const [error, setError] = useState()                    
   let dogID = []
   let catID = []
 
-  useEffect(() => {                 // useEffect to store JSON values 
+  useEffect(() => {
+    // useEffect to store JSON values                  
     const DOG_KEY = process.env.REACT_APP_DOG_KEY
-    fetch(`https://api.thedogapi.com/v1/breeds?api_key=${DOG_KEY}`)                  // in state on page load
-    .then(res => res.json())  
-    .then(response => {
-      setRandomDog(response)     // Fetches API and 
-      console.log(response)       //stores it in randomData state
-    }, (error) => {
-        setError(error)
-      }
-    )
-    const CAT_KEY = process.env.REACT_APP_CAT_KEY
-    fetch(`https://api.thecatapi.com/v1/breeds?api_key=${CAT_KEY}`)                  // in state on page load
-    .then(res => res.json())  
-    .then(response => {
-      setRandomCat(response)      // Fetches API and     
-      console.log(response)       //stores it in randomData state
-    }, (error) => {
-      setError(error)
-      }
-    )
-      
-    // catID = Object.keys(randomCat)
-    // let temp = catID[getRndInteger(1, 66)]
-    // setRandomCatNum(5)
-    // console.log(randomCat[4])
-    // // console.log(getRndInteger(1, 66))
+    const CAT_KEY = process.env.REACT_APP_CAT_KEY  
+    Promise.all([
+      // Fetches API and stores it in randomDog/randomCat state
+      fetch(`https://api.thedogapi.com/v1/breeds?api_key=${DOG_KEY}`).then(value => value.json()),
+      fetch(`https://api.thecatapi.com/v1/breeds?api_key=${CAT_KEY}`).then(value => value.json())
+      ])
+      .then((value) => {
+        setRandomDog(value[0])
+        setRandomCat(value[1])
+      })
+      .catch((err) => {
+          setError(err);
+      });
+
   }, []);
 
 
@@ -102,3 +93,8 @@ function App() {
 
 export default App;
 
+    // catID = Object.keys(randomCat)
+    // let temp = catID[getRndInteger(1, 66)]
+    // setRandomCatNum(5)
+    // console.log(randomCat[4])
+    // // console.log(getRndInteger(1, 66))
