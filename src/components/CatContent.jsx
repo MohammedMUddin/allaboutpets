@@ -14,7 +14,7 @@ export default function CatContent(props){
         maxWidth: 345, 
       };
 
-
+// check note 1 below
     if ( !props.filterdItem){
         return <p>Loading...</p>
     } 
@@ -108,3 +108,9 @@ export default function CatContent(props){
     </Grid>
   )
 }
+
+
+/* 
+it takes couple of seconds for cat api call to 
+fetch and populate props with required data 
+*/
