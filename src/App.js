@@ -71,26 +71,33 @@ function App() {
     <div> 
       <Navbar />  
       <Switch>
-        {/* Switch and Route of react router are used to 
-            route between the 
-            different pages (displayed components)  
-            Also note that navbar needs to be on all pages
-            so cannot be inside switch    
-        */}
+        {/* check note 1 */}
         <Route path='/about'>
           <About />
         </Route>
         <Route exact path='/'>
-        {/* filtering only ids that equal our random number. 
-            map is then going over a filtered item 
-            and extracting all the info on that item   
-        */}
+        {/* check note 2 */}
         {randomDog.filter(eachItem => eachItem.id === randomDogNum).map((filterdItem) => ( 
           <DogContent filterdItem={filterdItem} handleChange={handleChangeDog}/> 
         ))}
         </Route>
         <Route path='/cats' >
-          <CatContent filterdItem={randomCat[randomCatNum]} handleChangeCat={handleChangeCat}/>
+        {/* check note 3 */}
+        {
+          (randomCat[randomCatNum]) ?
+          (randomCat[randomCatNum].image) ? 
+          (randomCat[randomCatNum].image.url) ? 
+          <CatContent 
+          filterdItem={randomCat[randomCatNum]} 
+          handleChangeCat={handleChangeCat}/> :
+          <CatContent 
+          filterdItem={randomCat[randomCatNum+1]} 
+          handleChangeCat={handleChangeCat}/> :
+          <CatContent 
+          filterdItem={randomCat[randomCatNum+1]} 
+          handleChangeCat={handleChangeCat}/> :
+          null
+        }
         </Route>
       </Switch>
     </div> 
@@ -98,3 +105,29 @@ function App() {
 }
 
 export default App;
+
+/* note 1:
+Switch and Route of react router are used to 
+route between the 
+different pages (displayed components)  
+Also note that navbar needs to be on all pages
+so cannot be inside switch    
+*/ 
+
+
+/* note 2:
+filtering only ids that equal our random number. 
+map is then going over a filtered item 
+and extracting all the info on that item  
+*/ 
+
+
+/* note 3:
+Handling errors with inline if-else.
+if randomCat state empty return null
+else if randomCat.image unavailable go to the
+  next randomCat till randomCat.image found
+else if randomCat.image.url unavailable go to the
+  next randomCat till randomCat.image.url found
+*/ 
+
