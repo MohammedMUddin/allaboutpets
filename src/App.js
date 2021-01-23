@@ -13,10 +13,11 @@ import {
 
 function App() {
   const [randomDogNum, setRandomDogData] = useState(8)     //storing all the JSON data here
+  const [randomCatNum, setRandomCatNum] = useState(8) 
   const [randomCat, setRandomCat] = useState([])
   const [randomDog, setRandomDog] = useState([])      //storing a random randomData.id to get random dog 
   const [error, setError] = useState()                    
-  let res = []
+  let dogID = []
 
   useEffect(() => {                 // useEffect to store JSON values 
     const DOG_KEY = process.env.REACT_APP_DOG_KEY
@@ -44,8 +45,13 @@ function App() {
 
   function handleChangeDog(e){       
     e.preventDefault()
-    res = randomDog.map(eachWord => eachWord.id)         //res is an array of all the ids
-    setRandomDogData(res[getRndInteger(1, 171)])    //giving res a random index number to get random dog
+    dogID = randomDog.map(eachWord => eachWord.id)         //res is an array of all the ids
+    setRandomDogData(dogID[getRndInteger(1, 171)])    //giving res a random index number to get random dog
+  }
+
+  function handleChangeCat(e){
+    e.preventDefault()
+    
   }
 
 
