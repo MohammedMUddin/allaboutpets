@@ -5,6 +5,9 @@ import { Button, Grid, Typography, Card, CardMedia, CardContent} from '@material
 
 function DogContent(props) {
 
+    if ( !props.filterdItem){
+        return <p>Loading...</p>
+    } 
     return (
         <Grid 
         container 
