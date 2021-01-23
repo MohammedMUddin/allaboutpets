@@ -12,7 +12,7 @@ import {
 
 
 function App() {
-  const [randomData, setRandomData] = useState(8)     //storing all the JSON data here
+  const [randomDogNum, setRandomDogData] = useState(8)     //storing all the JSON data here
   const [randomCat, setRandomCat] = useState([])
   const [randomDog, setRandomDog] = useState([])      //storing a random randomData.id to get random dog 
   const [error, setError] = useState()                    
@@ -45,7 +45,7 @@ function App() {
   function handleChangeDog(e){       
     e.preventDefault()
     res = randomDog.map(eachWord => eachWord.id)         //res is an array of all the ids
-    setRandomData(res[getRndInteger(1, 171)])    //giving res a random index number to get random dog
+    setRandomDogData(res[getRndInteger(1, 171)])    //giving res a random index number to get random dog
   }
 
 
@@ -75,7 +75,7 @@ function App() {
             map is then going over a filtered item 
             and extracting all the info on that item   
         */}
-        {randomDog.filter(eachItem => eachItem.id === randomData).map((filterdItem) => ( 
+        {randomDog.filter(eachItem => eachItem.id === randomDogNum).map((filterdItem) => ( 
           <DogContent filterdItem={filterdItem} handleChange={handleChangeDog}/> 
         ))}
         </Route>
@@ -88,3 +88,4 @@ function App() {
 }
 
 export default App;
+
