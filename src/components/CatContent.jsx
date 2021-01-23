@@ -5,15 +5,6 @@ import { Button, Grid, Typography, Card, CardMedia, CardContent} from '@material
 
 export default function CatContent(props){
     
-    const cardstyle = {
-        maxWidth: 345, 
-      };
-    
-    const contentstyle = {
-        minWidth: 310,
-        maxWidth: 345, 
-      };
-
 // check note 1 below
     if ( !props.filterdItem){
         return <p>Loading...</p>
@@ -27,17 +18,17 @@ export default function CatContent(props){
         style={{backgroundColor: "#f5f4f4", minHeight: "95vh"}} 
         > 
             
-            <Grid item xs={10}>
-                <Card style={cardstyle}> 
+            <Grid item xs={10} md={4}>
+                <Card> 
                     <CardMedia 
                         component="img"
-                        height="240"
+                        height="auto"
                         image={props.filterdItem.image.url}
                     />
                 </Card>
             </Grid>
-            <Grid item xs={10}>
-                <Card style={contentstyle}> 
+            <Grid item xs={10} md={4}>
+                <Card minWidth="310" > 
                     <CardContent height="100%" style={{backgroundColor: "#cae4db"}}>
                         <Typography variant="h6" style={{"fontWeight": "bold"}}>
                         {props.filterdItem.name}
@@ -113,4 +104,5 @@ export default function CatContent(props){
 /* 
 it takes couple of seconds for cat api call to 
 fetch and populate props with required data 
+therefor using conditional rendering 
 */
