@@ -26,6 +26,7 @@ export default function CatContent(props){
     }
 
     let data
+    // console.log(props.filterdItem)
     if (props.filterdItem[randomNum].image && props.filterdItem[randomNum].image.url) {
         data = props.filterdItem[randomNum]
     } else {
