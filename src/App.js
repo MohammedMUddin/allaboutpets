@@ -69,7 +69,6 @@ function App() {
   }
   return (
     <div> 
-      {console.log(randomDogNum)}
       <Navbar />  
       <Switch>
         {/* check note 1 */}
