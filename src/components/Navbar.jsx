@@ -17,8 +17,6 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-
-
 function Navbar() {
 
     const classes = useStyles();
@@ -28,24 +26,24 @@ function Navbar() {
             <div className={classes.root}>
                 <AppBar position="static" style={{backgroundColor: "#00303f"}}>
                     <Toolbar>
-                        <Typography variant="h6" className={classes.title}>
-                        AllAboutPets
-                        </Typography>
-                        <Button 
-                          color="inherit" 
-                          onClick={() => history.push("/")}
-                          >Dogs
-                        </Button>
-                        <Button 
-                          color="inherit" 
-                          onClick={() => history.push("/cats")}
-                          >Cats
-                        </Button>
-                        <Button 
-                          color="inherit" 
-                          onClick={() => history.push("/about")}
-                          >About
-                        </Button>
+                      <Typography className={classes.title}>
+                      allaboutpets
+                      </Typography>
+                      <Button 
+                        color="inherit" 
+                        onClick={() => history.push("/")}
+                        >Dogs
+                      </Button>
+                      <Button 
+                        color="inherit" 
+                        onClick={() => history.push("/cats")}
+                        >Cats
+                      </Button>
+                      <Button 
+                        color="inherit" 
+                        onClick={() => history.push("/about")}
+                        >About
+                      </Button>
                     </Toolbar>
                 </AppBar>
             </div>  
