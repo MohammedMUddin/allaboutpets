@@ -31,12 +31,12 @@ function Navbar() {
                       </Typography>
                       <Button 
                         color="inherit" 
-                        onClick={() => history.push("/")}
+                        onClick={() => history.push("/dogs")}
                         >Dogs
                       </Button>
                       <Button 
                         color="inherit" 
-                        onClick={() => history.push("/cats")}
+                        onClick={() => history.push("/")}
                         >Cats
                       </Button>
                       <Button 

@@ -75,13 +75,13 @@ function App() {
         <Route path='/about'>
           <About />
         </Route>
-        <Route exact path='/'>
+        <Route exact path='/dogs'>
         {/* check note 2 */}
         {randomDog.filter(eachItem => eachItem.id === randomDogNum).map((filterdItem) => ( 
           <DogContent filterdItem={filterdItem} handleChange={handleChangeDog}/> 
         ))}
         </Route>
-        <Route path='/cats' >
+        <Route path='/' >
         {/* check note 3 */}
         {
           (randomCat[randomCatNum]) ?
