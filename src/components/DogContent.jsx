@@ -17,7 +17,7 @@ function DogContent(props) {
         style={{backgroundColor: "#f5f4f4", minHeight: "95vh"}} 
         > 
             
-            <Grid item xs={10}>
+            <Grid item xs={10} md={4}>
                 <Card> 
                     <CardMedia 
                         component="img"
@@ -26,7 +26,7 @@ function DogContent(props) {
                     />
                 </Card>
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={10} md={4}>
                 <Card minWidth="310"> 
                     <CardContent height="100%" style={{backgroundColor: "#cae4db"}}>
                         <Typography variant="h6" style={{"fontWeight": "bold"}}>

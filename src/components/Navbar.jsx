@@ -26,8 +26,8 @@ function Navbar() {
             <div className={classes.root}>
                 <AppBar position="static" style={{backgroundColor: "#00303f"}}>
                     <Toolbar>
-                      <Typography className={classes.title}>
-                      allaboutpets
+                      <Typography variant="h6" className={classes.title}>
+                      AllAboutPets
                       </Typography>
                       <Button 
                         color="inherit" 
