@@ -13,7 +13,7 @@ import {
 
 
 function App() {
-  const [randomDogNum, setRandomDogNum] = useState(12)     //storing all the JSON data here
+  const [randomDogNum, setRandomDogNum] = useState(221)     //storing all the JSON data here
   const [randomCatNum, setRandomCatNum] = useState(8) 
   const [randomCat, setRandomCat] = useState([])     //storing a random randomData.id to get random dog 
   const [randomDog, setRandomDog] = useState([])
@@ -69,6 +69,7 @@ function App() {
   }
   return (
     <div> 
+      {console.log(randomDogNum)}
       <Navbar />  
       <Switch>
         {/* check note 1 */}
